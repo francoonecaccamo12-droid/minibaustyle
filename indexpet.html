@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minibaustyle | Luxury Dog Fashion</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+:root{
+--accent:#c6a96b;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#f8f6f2;
+color:#111;
+overflow-x:hidden;
+}
+
+/* NAV */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+padding:30px 10%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+transition:0.5s;
+}
+
+header.scrolled{
+background:rgba(248,246,242,0.9);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:1.3rem;
+letter-spacing:2px;
+}
+
+nav a{
+margin-left:40px;
+text-decoration:none;
+color:#111;
+font-size:0.9rem;
+letter-spacing:1px;
+position:relative;
+transition:0.3s;
+}
+
+nav a:hover{
+color:var(--accent);
+}
+
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+width:0;
+height:1px;
+background:#111;
+transition:0.4s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 20px;
+background:
+linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)),
+url('https://images.unsplash.com/photo-1552053831-71594a27632d?w=1600&q=80&auto=format');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+color:white;
+}
+
+.hero-content{
+max-width:900px;
+animation:fadeIn 1.5s ease forwards;
+opacity:0;
+}
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:4rem;
+font-weight:500;
+line-height:1.1;
+}
+
+.hero p{
+margin-top:30px;
+font-size:1.2rem;
+opacity:0.9;
+}
+
+.btn{
+margin-top:40px;
+display:inline-block;
+padding:18px 50px;
+border:1px solid white;
+color:white;
+text-decoration:none;
+letter-spacing:1px;
+transition:0.4s;
+}
+
+.btn:hover{
+background:white;
+color:black;
+}
+
+/* SECTION */
+
+section{
+padding:160px 10%;
+}
+
+/* COLLECTION */
+
+.collection{
+text-align:center;
+}
+
+.collection h2{
+font-family:'Playfair Display',serif;
+font-size:2.5rem;
+margin-bottom:80px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:80px;
+}
+
+.product{
+opacity:0;
+transform:translateY(60px);
+transition:0.8s;
+cursor:pointer;
+}
+
+.product.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.product:hover{
+transform:translateY(-10px);
+}
+
+.product img{
+width:100%;
+height:450px;
+object-fit:cover;
+transition:0.6s ease;
+}
+
+.product:hover img{
+transform:scale(1.05);
+}
+
+.product h3{
+margin-top:25px;
+font-weight:500;
+}
+
+.price{
+margin-top:10px;
+font-size:0.9rem;
+opacity:0.7;
+}
+
+/* STORY */
+
+.story{
+display:flex;
+justify-content:center;
+text-align:center;
+}
+
+.story-text{
+max-width:800px;
+opacity:0;
+transform:translateY(60px);
+transition:0.8s;
+}
+
+.story-text.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.story-text h2{
+font-family:'Playfair Display',serif;
+font-size:2.2rem;
+margin-bottom:30px;
+}
+
+.story-text p{
+line-height:1.8;
+opacity:0.8;
+}
+
+.story-text img{
+margin-top:50px;
+height:500px;
+object-fit:cover;
+width:100%;
+border-radius:8px;
+}
+
+/* CTA */
+
+.cta{
+text-align:center;
+background:#111;
+color:white;
+padding:150px 40px;
+}
+
+.cta h2{
+font-family:'Playfair Display',serif;
+font-size:2.5rem;
+}
+
+.cta a{
+display:inline-block;
+margin-top:40px;
+padding:18px 50px;
+border:1px solid white;
+color:white;
+text-decoration:none;
+transition:0.4s;
+}
+
+.cta a:hover{
+background:white;
+color:black;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:60px;
+font-size:0.8rem;
+opacity:0.6;
+}
+
+/* Animations */
+
+@keyframes fadeIn{
+to{opacity:1;}
+from{opacity:0; transform:translateY(30px);}
+}
+
+@media(max-width:900px){
+.hero h1{
+font-size:2.5rem;
+}
+}
+
+</style>
+</head>
+<body>
+
+<header id="header">
+<div class="logo">MINIBAUSTYLE</div>
+<nav>
+<a href="#collezione">Collezione</a>
+<a href="#brand">Brand</a>
+<a href="#contatti">Contatti</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Luxury Fashion<br>For Modern Dogs</h1>
+<p>Eleganza senza tempo. Materiali premium. Design distintivo.</p>
+<a href="#collezione" class="btn">Scopri la Collezione</a>
+</div>
+</section>
+
+<section id="collezione" class="collection">
+<h2>Collezione 2025</h2>
+<div class="products">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=1200&q=80&auto=format" loading="lazy">
+<h3>Signature Coat</h3>
+<div class="price">€120</div>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=1200&q=80&auto=format" loading="lazy">
+<h3>Minimal Harness</h3>
+<div class="price">€85</div>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=1200&q=80&auto=format" loading="lazy">
+<h3>Winter Atelier</h3>
+<div class="price">€150</div>
+</div>
+
+</div>
+</section>
+
+<section id="brand" class="story">
+<div class="story-text">
+<h2>Il Concept</h2>
+<p>
+Minibaustyle nasce dall’incontro tra estetica contemporanea
+e artigianalità.  
+Un brand pensato per chi considera il proprio cane
+parte integrante del proprio stile di vita.
+</p>
+
+<img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=1200&q=80&auto=format" loading="lazy">
+</div>
+</section>
+
+<section class="cta" id="contatti">
+<h2>Ridefinisci il concetto di pet fashion</h2>
+<a href="#">Richiedi il catalogo esclusivo</a>
+</section>
+
+<footer>
+© 2025 Minibaustyle – Luxury Experience
+</footer>
+
+<script>
+
+const header = document.getElementById("header");
+window.addEventListener("scroll",()=>{
+header.classList.toggle("scrolled",window.scrollY>50);
+});
+
+const products = document.querySelectorAll(".product");
+const storyText = document.querySelector(".story-text");
+
+window.addEventListener("scroll",()=>{
+products.forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight - 100){
+el.classList.add("show");
+}
+});
+if(storyText.getBoundingClientRect().top < window.innerHeight - 100){
+storyText.classList.add("show");
+}
+});
+
+</script>
+
+</body>
+</html>
